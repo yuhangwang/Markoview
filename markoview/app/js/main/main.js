@@ -4,12 +4,14 @@ const form2D_js_1 = require("../tk/element/form/form2D.js");
 const getMatrix_js_1 = require("../io/input/form/matrix/getMatrix.js");
 const resizeMatrix_js_1 = require("../action/update/matrix/resizeMatrix.js");
 const matrixFormId = "matrix";
-const matrixSizeButtonId = "set_matrix_size";
+const matrixReSizeButtonId = "set_matrix_size";
 const matrixSizeInputId = "matrix_size";
 const showMatrixButtonId = "show_matrix";
-jQuery("body").append(form2D_js_1.form2D(3, 3, null, matrixFormId));
-jQuery(`#${matrixFormId} input`).css("width", "20px");
-resizeMatrix_js_1.resizeMatrix(matrixSizeButtonId, matrixSizeInputId, matrixFormId, { width: "20px" });
-jQuery(`#${showMatrixButtonId}`)
-    .click(() => console.log(matrixToString_js_1.matrixToString(getMatrix_js_1.getMatrix(jQuery(`#${matrixFormId}`)))));
+const randomizeButtonId = "random_stochastic_matrix";
+const defaultMatrixSize = 3;
+jQuery("body").append(form2D_js_1.form2D(defaultMatrixSize, defaultMatrixSize, null, matrixFormId));
+jQuery(`#${matrixFormId}`).find("input").css("width", "20px");
+console.log(jQuery(`#${matrixFormId}`).find("input"));
+resizeMatrix_js_1.resizeMatrix(jQuery(`#${matrixReSizeButtonId}`), jQuery(`#${matrixSizeInputId}`), jQuery(`#${matrixFormId}`), { width: "20px" });
+jQuery(`#${showMatrixButtonId}`).click(() => console.log(matrixToString_js_1.matrixToString(getMatrix_js_1.getMatrix(jQuery(`#${matrixFormId}`)))));
 //# sourceMappingURL=main.js.map
