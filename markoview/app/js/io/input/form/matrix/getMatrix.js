@@ -1,8 +1,8 @@
 "use strict";
-function getMatrix(jqueryObj) {
+function getMatrix(formId) {
     let matrix = [];
     let ind = 0;
-    jqueryObj
+    jQuery(`#${formId}`)
         .contents()
         .each((i, item) => {
         if (item.nodeName == "INPUT") {

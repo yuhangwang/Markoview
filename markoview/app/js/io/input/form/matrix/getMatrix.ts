@@ -1,9 +1,9 @@
 export function
-getMatrix(jqueryObj: any)
+getMatrix(formId: string)
 {   let matrix: number[][] = [];
     let ind = 0;
     
-    jqueryObj
+    jQuery(`#${formId}`)
     .contents()
     .each((i: number, item: any) => 
         {   if (item.nodeName == "INPUT")

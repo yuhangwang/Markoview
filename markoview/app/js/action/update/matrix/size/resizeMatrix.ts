@@ -1,19 +1,16 @@
 import {form2D} from "../../../../tk/element/form/form2D.js";
+import {randomizeMatrix} from "../../../../action/update/matrix/value/randomizeMatrix.js";
 
 
 /* Resize the matrix input form */
 export function
 resizeMatrix(
-    buttonId: any,
-    inputId: any,
-    formId: any,
-    newFormId: string,
+    inputId: string,
+    formId: string,
     prop: any = {})
-{   jQuery(`#${buttonId}`).click(() =>
-            {   const n = parseInt(jQuery(`#${inputId}`).val(), 10);
-                jQuery(`#${formId}`).replaceWith(form2D(n, n, null, newFormId));
-                jQuery(`#${newFormId}`).find("input").css(prop);
-            }
-        );
+{   const n = parseInt(jQuery(`#${inputId}`).val(), 10);
+    jQuery(`#${formId}`).replaceWith(form2D(n, n, null, formId));
+    jQuery(`#${formId}`).find("input").css(prop);
+    randomizeMatrix(formId, {width: "40px"})
     return formId;
 }
