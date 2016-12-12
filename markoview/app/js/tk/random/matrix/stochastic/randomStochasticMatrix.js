@@ -4,4 +4,4 @@ function randomStochasticMatrix(size) {
         .map((xs) => numeric.div(xs, numeric.sum(xs)));
 }
 exports.randomStochasticMatrix = randomStochasticMatrix;
-//# sourceMappingURL=randomStochasticMatrix.js.map
+//# sourceMappingURL=randomStochasticmatrix.js.map

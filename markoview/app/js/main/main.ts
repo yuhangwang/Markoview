@@ -3,7 +3,8 @@ declare var jQuery: JQueryStatic;
 import {matrixToString} from "../tk/convert/matrix/toString/matrixToString.js";
 import {form2D} from "../tk/element/form/form2D.js";
 import {getMatrix} from "../io/input/form/matrix/getMatrix.js"
-import {resizeMatrix} from "../action/update/matrix/resizeMatrix.js";
+import {resizeMatrix} from "../action/update/matrix/size/resizeMatrix.js";
+import {randomizeMatrix} from "../action/update/matrix/value/randomizeMatrix.js";
 
 
 const matrixFormId = "matrix";
@@ -22,14 +23,21 @@ jQuery("body").append(
         matrixFormId));
 
 jQuery(`#${matrixFormId}`).find("input").css("width", "20px");
-console.log(jQuery(`#${matrixFormId}`).find("input"));
 
 // let user resize the matrix
 resizeMatrix(
-    jQuery(`#${matrixReSizeButtonId}`),
-    jQuery(`#${matrixSizeInputId}`),
-    jQuery(`#${matrixFormId}`),
+    matrixReSizeButtonId,
+    matrixSizeInputId,
+    matrixFormId,
+    matrixFormId,
     {width: "20px"}
+    );
+
+// make random stochastic matrix
+randomizeMatrix(
+    randomizeButtonId,
+    matrixFormId,
+    {width: "40px"}
     );
 
 // show matrix on console
