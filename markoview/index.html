@@ -1,16 +1,20 @@
 <!doctype html>
 <html>
 <head>
-  <script src="deps/js/d3-4.4.0.js"></script>
-  <script src="deps/js/jquery-3.1.1.js"></script>
-  <script src="deps/js/numeric-1.2.6.min.js"></script>
-  <script src="deps/js/system-0.20.0a.js"></script>
+    <link src="app/css/markoview.css"></link>
+    <script src="deps/js/d3-4.4.0.js"></script>
+    <script src="deps/js/jquery-3.1.1.js"></script>
+    <script src="deps/js/numeric-1.2.6.min.js"></script>
+    <script src="deps/js/system-0.20.0a.js"></script>
 </head>
 <body>
-    <button id="get">get matrix</button>
+    <button id="set_matrix_size">set matrix size</button>
+    <input type="number" id="matrix_size" value="3"><br>
 
+    <button id="show_matrix">get matrix</button>
+    <button id="random_stochastic_matrix">random stochastic</button>
     <script>
-        SystemJS.import("app/js/io/input/matrix.js");
+        SystemJS.import("app/js/main/main.js");
     </script>
 </body>
 </html>

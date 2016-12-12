@@ -17,7 +17,7 @@ form2D(
                         .attr({class: cell_class})
                         .attr({id: cell_id})
                         .attr({value: cell_value}))
-                .concat($("<br>")))
+                .concat(jQuery("<br>")))
         .reduce((a: any[], x: any[]) => a.concat(x))
         ;
 
