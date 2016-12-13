@@ -24,19 +24,28 @@ main(matrixFormId: string)
                 null,
                 matrixFormId))
         ;
-    randomizeMatrix(matrixFormId, {width: "40px"})
+    randomizeMatrix(
+        matrixFormId,
+        defaultMatrixSize,
+        defaultMatrixSize,
+        {width: "40px"})
 
     // let user resize the matrix
      jQuery(`#${resizeMatrixButtonId}`)
         .click(() => resizeMatrix(
-                matrixSizeInputId,
+                parseInt(jQuery(`#${matrixSizeInputId}`).val(), 10),
+                parseInt(jQuery(`#${matrixSizeInputId}`).val(), 10),
                 matrixFormId,
                 {width: "40px"})
         );
     
     // make random stochastic matrix
     jQuery(`#${randomizeButtonId}`)
-        .click(() => randomizeMatrix(matrixFormId, {width: "40px"}));
+        .click(() => randomizeMatrix(
+            matrixFormId,
+            parseInt(jQuery(`#${matrixSizeInputId}`).val(), 10),
+            parseInt(jQuery(`#${matrixSizeInputId}`).val(), 10),
+            {width: "40px"}));
 
     // show matrix content on console
     jQuery(`#${showMatrixButtonId}`).click(

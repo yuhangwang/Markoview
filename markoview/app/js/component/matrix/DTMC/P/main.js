@@ -12,11 +12,11 @@ function main(matrixFormId) {
     const defaultMatrixSize = 3;
     jQuery(`#${matrixFormId}`)
         .replaceWith(form2D_js_1.form2D(defaultMatrixSize, defaultMatrixSize, null, matrixFormId));
-    randomizeMatrix_js_1.randomizeMatrix(matrixFormId, { width: "40px" });
+    randomizeMatrix_js_1.randomizeMatrix(matrixFormId, defaultMatrixSize, defaultMatrixSize, { width: "40px" });
     jQuery(`#${resizeMatrixButtonId}`)
-        .click(() => resizeMatrix_js_1.resizeMatrix(matrixSizeInputId, matrixFormId, { width: "40px" }));
+        .click(() => resizeMatrix_js_1.resizeMatrix(parseInt(jQuery(`#${matrixSizeInputId}`).val(), 10), parseInt(jQuery(`#${matrixSizeInputId}`).val(), 10), matrixFormId, { width: "40px" }));
     jQuery(`#${randomizeButtonId}`)
-        .click(() => randomizeMatrix_js_1.randomizeMatrix(matrixFormId, { width: "40px" }));
+        .click(() => randomizeMatrix_js_1.randomizeMatrix(matrixFormId, parseInt(jQuery(`#${matrixSizeInputId}`).val(), 10), parseInt(jQuery(`#${matrixSizeInputId}`).val(), 10), { width: "40px" }));
     jQuery(`#${showMatrixButtonId}`).click(() => console.log(matrixToString_js_1.matrixToString(getMatrix_js_1.getMatrix(matrixFormId))));
 }
 exports.main = main;

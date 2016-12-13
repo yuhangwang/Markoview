@@ -1,6 +1,6 @@
 "use strict";
-function randomStochasticMatrix(size) {
-    return numeric.random([size, size])
+function randomStochasticMatrix(rows, columns) {
+    return numeric.random([rows, columns])
         .map((xs) => numeric.div(xs, numeric.sum(xs)));
 }
 exports.randomStochasticMatrix = randomStochasticMatrix;

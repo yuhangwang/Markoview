@@ -5,12 +5,12 @@ import {randomizeMatrix} from "../../../../action/update/matrix/value/randomizeM
 /* Resize the matrix input form */
 export function
 resizeMatrix(
-    inputId: string,
-    formId: string,
-    prop: any = {})
-{   const n = parseInt(jQuery(`#${inputId}`).val(), 10);
-    jQuery(`#${formId}`).replaceWith(form2D(n, n, null, formId));
+        rows: number,
+        columns: number,
+        formId: string,
+        prop: any = {})
+{   jQuery(`#${formId}`).replaceWith(form2D(rows, columns, null, formId));
     jQuery(`#${formId}`).find("input").css(prop);
-    randomizeMatrix(formId, {width: "40px"})
+    randomizeMatrix(formId, rows, columns, {width: "40px"})
     return formId;
 }
