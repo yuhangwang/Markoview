@@ -18,5 +18,13 @@
   "bugs": {
     "url": "https://github.com/yuhangwang/Markoview/issues"
   },
-  "homepage": "https://github.com/yuhangwang/Markoview#readme"
+  "homepage": "https://github.com/yuhangwang/Markoview#readme",
+  "dependencies": {
+    "d3": "4.4.0",
+    "types.d3": "0.1.1"
+  },
+  "devDependencies": {
+    "@types/d3": "4.4.0",
+    "@types/d3-hierarchy": "1.0.4"
+  }
 }

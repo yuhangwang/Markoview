@@ -1,3 +1,4 @@
+// Get the content of the form as a 2D matrix
 export function
 getMatrix(formId: string)
 {   let matrix: number[][] = [];
@@ -17,5 +18,6 @@ getMatrix(formId: string)
             }
         }
     );
+    
     return matrix;
 }

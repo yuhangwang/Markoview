@@ -12,5 +12,6 @@ resizeMatrix(
 {   jQuery(`#${formId}`).replaceWith(form2D(rows, columns, null, formId));
     jQuery(`#${formId}`).find("input").css(prop);
     randomizeMatrix(formId, rows, columns, {width: "40px"})
+    
     return formId;
 }

@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/86baab4f5488a27554a85539751623bfe6b69b26/d3-axis/index.d.ts",
+    "raw": "registry:dt/d3-axis#1.0.3+20160820170614",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/86baab4f5488a27554a85539751623bfe6b69b26/d3-axis/index.d.ts"
+  }
+}

@@ -2,20 +2,25 @@
 <html>
 <head>
     <link src="app/css/markoview.css"></link>
-    <script src="deps/js/d3-4.4.0.js"></script>
+    <script src="deps/js/d3.v3.min.js"></script>
     <script src="deps/js/jquery-3.1.1.js"></script>
     <script src="deps/js/numeric-1.2.6.min.js"></script>
     <script src="deps/js/system-0.20.0a.js"></script>
 </head>
 <body>
-    <button id="set_matrix_size">set matrix size</button>
-    <input type="number" id="matrix_size" value="3"><br>
+    <button id="resize_network">set network size</button>
+    <input type="number" id="network_size" value="3"><br>
 
-    <button id="show_matrix">get matrix</button>
-    <button id="random_stochastic_matrix">random stochastic</button>
-    <button id="draw_network">draw network</button>
-    <form id="matrix"></form>
+    <button id="show_matrix">show matrix</button>
+    <button id="random_stochastic_matrix">random stochastic matrix</button>
+    <form id="matrixP"></form>
+
+    
+    <button id="show_vector">show vector</button>
+    <button id="random_stochastic_vector">random stochastic vector</button>
     <form id="vector"></form>
+
+    <button id="draw_network">draw network</button> <br>
 
     <svg id="network"></svg>
     <script>

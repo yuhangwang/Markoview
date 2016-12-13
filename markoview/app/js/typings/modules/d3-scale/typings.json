@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/cce6c247792d574f6598b546f928572a384ced3c/d3-scale/index.d.ts",
+    "raw": "registry:dt/d3-scale#1.0.0+20161207020330",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/cce6c247792d574f6598b546f928572a384ced3c/d3-scale/index.d.ts"
+  }
+}

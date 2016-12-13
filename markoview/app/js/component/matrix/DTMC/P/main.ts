@@ -8,47 +8,44 @@ import {randomizeMatrix} from "../../../../action/update/matrix/value/randomizeM
 
 
 export function
-main(matrixFormId: string)
-{   const resizeMatrixButtonId = "set_matrix_size";
-    const matrixSizeInputId = "matrix_size";
-    const showMatrixButtonId = "show_matrix";
-    const randomizeButtonId = "random_stochastic_matrix";
-    const defaultMatrixSize = 3;
+main(p: any)
+{   const ids = p.dom.id;
+    const defaults = p.default;
 
     // add initial matrix
-    jQuery(`#${matrixFormId}`)
+    jQuery(`#${ids.form.matrixP}`)
         .replaceWith(
             form2D(
-                defaultMatrixSize,
-                defaultMatrixSize,
+                defaults.network.size,
+                defaults.network.size,
                 null,
-                matrixFormId))
+                ids.form.matrixP))
         ;
     randomizeMatrix(
-        matrixFormId,
-        defaultMatrixSize,
-        defaultMatrixSize,
+        ids.form.matrixP,
+        defaults.network.size,
+        defaults.network.size,
         {width: "40px"})
 
     // let user resize the matrix
-     jQuery(`#${resizeMatrixButtonId}`)
+    jQuery(`#${ids.button.resizeNetwork}`)
         .click(() => resizeMatrix(
-                parseInt(jQuery(`#${matrixSizeInputId}`).val(), 10),
-                parseInt(jQuery(`#${matrixSizeInputId}`).val(), 10),
-                matrixFormId,
+                parseInt(jQuery(`#${ids.input.networkSize}`).val(), 10),
+                parseInt(jQuery(`#${ids.input.networkSize}`).val(), 10),
+                ids.form.matrixP,
                 {width: "40px"})
         );
     
     // make random stochastic matrix
-    jQuery(`#${randomizeButtonId}`)
+    jQuery(`#${ids.button.randomizeMatrix}`)
         .click(() => randomizeMatrix(
-            matrixFormId,
-            parseInt(jQuery(`#${matrixSizeInputId}`).val(), 10),
-            parseInt(jQuery(`#${matrixSizeInputId}`).val(), 10),
+            ids.form.matrixP,
+            parseInt(jQuery(`#${ids.input.networkSize}`).val(), 10),
+            parseInt(jQuery(`#${ids.input.networkSize}`).val(), 10),
             {width: "40px"}));
 
     // show matrix content on console
-    jQuery(`#${showMatrixButtonId}`).click(
-        () => console.log(matrixToString(getMatrix(matrixFormId)))
+    jQuery(`#${ids.button.showMatrix}`).click(
+        () => console.log(matrixToString(getMatrix(ids.form.matrixP)))
         );
 }

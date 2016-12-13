@@ -3,7 +3,7 @@ import {randomStochasticMatrix} from "../../../../tk/random/matrix/stochastic/ra
 
 
 export function
-randomizeMatrix(formId: string, rows: number, columns: number, prop: any, precision: number = 2)
+randomizeMatrix(formId: string, rows: number, columns: number, prop: any, precision: number = 4)
 {   const newValues = randomStochasticMatrix(rows, columns)
         .reduce((a: number[], x: number[]) => a.concat(x));
     jQuery(`#${formId}`).find("input").each(
