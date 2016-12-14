@@ -8,6 +8,6 @@ import {updateNodes} from "./node/updateNodes.js";
 export function
 updateNodeEdgePosition()
 {   //updateStraightEdges("line.link");
-{   updateCurvedEdges("path.link");
+    updateCurvedEdges("path.link");
     updateNodes("g.node");
 }

@@ -10,8 +10,5 @@ addCurvedEdges(svgId: string, edges: any[])
         .enter()
         .append("path")
         .attr("class", "link")
-        .style("stroke", "black")
-        .style("opacity", 0.2)
-        .style("stroke-width", (d: any) => 5 * d.weight)
         ;
 }

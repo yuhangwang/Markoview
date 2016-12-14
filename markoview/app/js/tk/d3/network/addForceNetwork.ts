@@ -1,6 +1,6 @@
 declare let d3: any;
 import {init} from "./init/init.js";
-import {addArrowHead} from "./arrowHead/addArrowHead.js";
+import {addArrowHeadToCurves} from "./arrowHead/curved/addArrowHeadToCurves.js";
 import {addStraightEdges} from "./edge/straight/addStraightEdges.js";
 import {addCurvedEdges} from "./edge/curved/addCurvedEdges.js";
 import {addNodes} from "./node/addNodes.js";
@@ -18,5 +18,5 @@ addForceNetwork(svgId: string, nodes: any[], edges: any[])
     addNodes(svgId, nodes);
     addCurvedEdges(svgId, edges);
     force.start();
-    addArrowHead(force);
+    addArrowHeadToCurves(force);
 }

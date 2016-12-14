@@ -1,5 +1,5 @@
 "use strict";
-function addArrowHead(force) {
+function addArrowHeadToLines(force) {
     let marker = d3.select("svg")
         .append("defs")
         .append("marker")
@@ -15,5 +15,5 @@ function addArrowHead(force) {
     d3.selectAll("line")
         .attr("marker-end", "url(#Triangle)");
 }
-exports.addArrowHead = addArrowHead;
-//# sourceMappingURL=addArrowHead.js.map
+exports.addArrowHeadToLines = addArrowHeadToLines;
+//# sourceMappingURL=addArrowHeadToLines.js.map

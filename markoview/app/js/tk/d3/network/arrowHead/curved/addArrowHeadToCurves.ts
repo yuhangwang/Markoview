@@ -1,23 +1,24 @@
 declare let d3: any;
 
-/** add arrow heads */
+/** add arrow heads to curved lines */
 export function
-addArrowHead(force: any)
+addArrowHeadToCurves(force: any)
 {   let marker = d3.select("svg")
     .append("defs")
     .append("marker")
     .attr("id", "Triangle")
-    .attr("refX", 12)
-    .attr("refY", 6)
+    .attr("refX", 15)
+    .attr("refY", -1.5)
     .attr("markerUnits", "userSpaceOnUse")
     .attr("markerWidth", 12)
     .attr("markerHeight", 18)
     .attr("orient", "auto")
+    .attr("viewBox", "0 -5 10 10")
     .append("path")
-    .attr("d", 'M 0 0 12 6 0 12 3 6')
+    .attr("d", "M0,-5L10,0L0,5")
     ;
 
-    d3.selectAll("line")
+    d3.selectAll("path")
         .attr("marker-end", "url(#Triangle)")
         ;
 }
