@@ -5,6 +5,7 @@ import {getArray} from "../../../io/input/form/array/getArray.js"
 import {addForceNetwork} from "../../../tk/d3/network/addForceNetwork.js";
 
 
+/** Draw the force network graph */
 export function
 drawNetwork(p: any)
 {   const ids = p.dom.id;
@@ -20,6 +21,6 @@ drawNetwork(p: any)
                     weight: vector[i]
                 }
             ));
-    const edges = matrixToEdges(matrixP, nodeNames, defaults.edge.weightScaling)
-    addForceNetwork(nodes, edges);
+    const edges = matrixToEdges(matrixP, nodes, defaults.edge.weightScaling)
+    addForceNetwork(ids.svg.network, nodes, edges);
 }

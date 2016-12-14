@@ -13,8 +13,6 @@ vector.main(p);
 
 const matrixP = getMatrix(ids.form.matrixP);
 
-console.log(matrixToString(matrixP));
-
 jQuery(`#${ids.button.drawNetwork}`)
     .click(() => drawNetwork(p))
     ;

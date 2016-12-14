@@ -16,8 +16,8 @@ function drawNetwork(p) {
         id: x,
         weight: vector[i]
     }));
-    const edges = matrixToEdges_js_1.matrixToEdges(matrixP, nodeNames, defaults.edge.weightScaling);
-    addForceNetwork_js_1.addForceNetwork(nodes, edges);
+    const edges = matrixToEdges_js_1.matrixToEdges(matrixP, nodes, defaults.edge.weightScaling);
+    addForceNetwork_js_1.addForceNetwork(ids.svg.network, nodes, edges);
 }
 exports.drawNetwork = drawNetwork;
 //# sourceMappingURL=drawNetwork.js.map
