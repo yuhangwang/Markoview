@@ -1,5 +1,5 @@
 declare let d3: any;
-import {updateCurvedEdges} from "./edge/curved/updateCurvedEdges.js";
+import {updateArcEdges} from "./edge/arc/updateArcEdges.js";
 import {updateStraightEdges} from "./edge/straight/updateStraightEdges.js";
 import {updateNodes} from "./node/updateNodes.js";
 
@@ -8,6 +8,6 @@ import {updateNodes} from "./node/updateNodes.js";
 export function
 updateNodeEdgePosition()
 {   //updateStraightEdges("line.link");
-    updateCurvedEdges("path.link");
+    updateArcEdges("path.link");
     updateNodes("g.node");
 }
