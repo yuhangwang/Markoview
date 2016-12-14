@@ -1,0 +1,1 @@
+{"version":3,"file":"buttonIds.js","sourceRoot":"","sources":["buttonIds.ts"],"names":[],"mappings":";AAAA;IAEI,MAAM,CAAC;QACH,aAAa,EAAE,gBAAgB;QAC/B,UAAU,EAAE,aAAa;QACzB,UAAU,EAAE,aAAa;QACzB,eAAe,EAAE,0BAA0B;QAC3C,eAAe,EAAE,0BAA0B;QAC3C,WAAW,EAAC,cAAc;QAC1B,YAAY,EAAE,eAAe;KAChC,CAAA;AACL,CAAC;AAXD,8BAWC"}

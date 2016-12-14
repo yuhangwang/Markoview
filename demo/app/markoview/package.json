@@ -1,0 +1,30 @@
+{
+  "name": "markoview",
+  "version": "0.1.0",
+  "description": "Markov chain viewer",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuhangwang/Markoview.git"
+  },
+  "keywords": [
+    "Markov"
+  ],
+  "author": "Yuhang (Steven)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yuhangwang/Markoview/issues"
+  },
+  "homepage": "https://github.com/yuhangwang/Markoview#readme",
+  "dependencies": {
+    "d3": "4.4.0",
+    "types.d3": "0.1.1"
+  },
+  "devDependencies": {
+    "@types/d3": "4.4.0",
+    "@types/d3-hierarchy": "1.0.4"
+  }
+}
