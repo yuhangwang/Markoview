@@ -21,7 +21,5 @@ drawNetwork(p: any)
                 }
             ));
     const edges = matrixToEdges(matrixP, nodeNames, defaults.edge.weightScaling)
-    console.log(nodes);
-    console.log(edges);
     addForceNetwork(nodes, edges);
 }

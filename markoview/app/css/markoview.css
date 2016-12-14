@@ -1,3 +1,6 @@
-#matrix_form
-{   width: 10px;
-}
+
+svg {
+    height: 500px;
+    width: 500px;
+    border: 1px solid gray;
+  }

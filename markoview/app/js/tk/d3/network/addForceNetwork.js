@@ -1,4 +1,5 @@
 "use strict";
+const forceTick_js_1 = require("./forceTick/forceTick.js");
 function addForceNetwork(nodes, edges) {
     let weightScale = d3.scale.linear()
         .domain(d3.extent(edges, (d) => d.weight))
@@ -10,7 +11,7 @@ function addForceNetwork(nodes, edges) {
         .size([500, 500])
         .nodes(nodes)
         .links(edges)
-        .on("tick", forceTick);
+        .on("tick", forceTick_js_1.forceTick);
     d3.select("svg")
         .selectAll("line.link")
         .data(edges, (d) => d.source.id + "-" + d.target.id)
@@ -20,6 +21,7 @@ function addForceNetwork(nodes, edges) {
         .style("stroke", "black")
         .style("opacity", 0.5)
         .style("stroke-width", (d) => d.weight);
+    console.log(d3.select("svg"));
     let nodeEnter = d3.select("svg")
         .selectAll("g.node")
         .data(nodes, (d) => d.id)
@@ -36,177 +38,6 @@ function addForceNetwork(nodes, edges) {
         .attr("y", 15)
         .text((d) => d.id);
     force.start();
-    function forceTick() {
-        d3.selectAll("line.link")
-            .attr("x1", (d) => d.source.x)
-            .attr("x2", (d) => d.target.x)
-            .attr("y1", (d) => d.source.y)
-            .attr("y2", (d) => d.target.y);
-        d3.selectAll("g.node")
-            .attr("transform", (d) => "translate(" + d.x + "," + d.y + ")");
-    }
-    let markder = d3.select("svg")
-        .append("defs")
-        .append("marker")
-        .attr("id", "Triangle")
-        .attr("refX", 12)
-        .attr("refY", 6)
-        .attr("markerUnits", "userSpaceOnUse")
-        .attr("markerWidth", 12)
-        .attr("markerHeight", 18)
-        .attr("orient", "auto")
-        .append("path")
-        .attr("d", 'M 0 0 12 6 0 12 3 6');
-    d3.selectAll("line")
-        .attr("marker-end", "url(#Triangle)");
-    d3.select("#controls")
-        .append("button")
-        .on('click', sizeByDegree)
-        .html("Degree Size");
-    function sizeByDegree() {
-        force.stop();
-        d3.selectAll("circle")
-            .attr("r", (d) => d.weight * 2);
-    }
-    d3.selectAll("g.node")
-        .call(force.drag());
-    function filterNetwork(force) {
-        force.stop();
-        let originalNodes = force.nodes();
-        let originalLinks = force.links();
-        let influentialNodes = originalNodes
-            .filter((d) => d.followers > 20);
-        let influentialLinks = originalLinks
-            .filter((d) => {
-            return influentialNodes.indexOf(d.source) > -1 &&
-                influentialNodes.indexOf(d.target) > 1;
-        });
-        d3.selectAll("g.node")
-            .data(influentialNodes, (d) => d.id)
-            .exit()
-            .transition()
-            .duration(4000)
-            .style("opacity", 0)
-            .remove();
-        d3.selectAll("line.link")
-            .data(influentialLinks, (d) => `${d.source.id}-${d.target.id}`)
-            .exit()
-            .transition()
-            .duration(3000)
-            .style("opacity", 0)
-            .remove();
-        force.nodes(influentialNodes)
-            .links(influentialLinks);
-        force.start();
-    }
-    function addEdge(force) {
-        force.stop();
-        let oldEdges = force.links();
-        let nodes = force.nodes();
-        let edge = { source: nodes[0], target: nodes[8], weight: 5 };
-        let newEdges = oldEdges.concat([edge]);
-        force.links(newEdges);
-        d3.select("svg")
-            .selectAll("line.link")
-            .data(newEdges, (d) => `${d.source.id}-${d.target.id}`)
-            .enter()
-            .insert("line", "g.nodes")
-            .attr("class", "link")
-            .style("stroke", "red")
-            .style("stroke-width", 5)
-            .attr("marker-end", "url(#Triangle)");
-        force.start();
-    }
-    addEdge(force);
-    function addNodesAndEdges(force) {
-        force.stop();
-        let oldEdges = force.links();
-        let oldNodes = force.nodes();
-        let node1 = { id: 'raj', followers: 100, following: 67 };
-        let node2 = { id: "wu", followers: 50, following: 33 };
-        let edge1 = { source: oldNodes[0], target: node1, weight: 5 };
-        let edge2 = { source: oldNodes[0], target: node2, weight: 5 };
-        let newEdges = oldEdges.concat([edge1, edge2]);
-        let newNodes = oldNodes.concat([node1, node2]);
-        force.links(newEdges).nodes(newNodes);
-        d3.select("svg")
-            .selectAll("line.link")
-            .data(newEdges, (d) => `${d.source.id}-${d.target.id}`)
-            .enter()
-            .insert("line", 'g.node')
-            .attr("class", "link")
-            .style("stroke", "red")
-            .style("stroke-width", 5)
-            .attr("marker-end", "url(#Triangle)");
-        let nodeEnter = d3.select("svg")
-            .selectAll("g.node")
-            .data(newNodes, (d) => d.id)
-            .enter()
-            .append("g")
-            .attr("class", "node")
-            .call(force.drag());
-        nodeEnter.append("circle")
-            .attr("r", 5)
-            .style("fill", "red")
-            .style("stroke", "darkred")
-            .style("stroke-width", "2px");
-        nodeEnter.append("text")
-            .style("text-anchor", "middle")
-            .attr("y", 15)
-            .text((d) => d.id);
-        force.start();
-    }
-    addNodesAndEdges(force);
-    function manuallyPositionNodes(force) {
-        let xExtent = d3.extent(force.nodes(), (d) => parseInt(d.followers));
-        let yExtent = d3.extent(force.nodes(), (d) => parseInt(d.following));
-        let xScale = d3.scale
-            .linear()
-            .domain(xExtent)
-            .range([50, 450]);
-        let yScale = d3.scale
-            .linear()
-            .domain(yExtent)
-            .range([450, 50]);
-        force.stop();
-        d3.selectAll("g.node")
-            .transition()
-            .duration(1000)
-            .attr("transform", (d) => `translate(${xScale(d.followers)}, ${yScale(d.following)})`);
-        d3.selectAll("line.link")
-            .transition()
-            .duration(1000)
-            .attr("x1", (d) => xScale(d.source.followers))
-            .attr("y1", (d) => yScale(d.source.following))
-            .attr("x2", (d) => xScale(d.target.followers))
-            .attr("y2", (d) => yScale(d.target.following));
-        let xAxis = d3.svg
-            .axis()
-            .scale(xScale)
-            .orient("bottom")
-            .tickSize(4);
-        let yAxis = d3.svg
-            .axis()
-            .scale(yScale)
-            .orient("right")
-            .tickSize(4);
-        d3.select("svg")
-            .append("g")
-            .attr("transform", `translate(0,460)`)
-            .call(xAxis);
-        d3.select("svg")
-            .append("g")
-            .attr("transform", `translate(460,0)`)
-            .call(yAxis);
-        d3.selectAll("g.node")
-            .each((d) => {
-            d.x = xScale(d.followers);
-            d.px = xScale(d.followers);
-            d.y = yScale(d.following);
-            d.py = yScale(d.following);
-        });
-    }
-    manuallyPositionNodes(force);
 }
 exports.addForceNetwork = addForceNetwork;
 //# sourceMappingURL=addForceNetwork.js.map
