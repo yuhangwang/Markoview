@@ -3,6 +3,7 @@ import {matrixToEdges} from "../../../tk/convert/matrix/toEdges/matrixToEdges.js
 import {getMatrix} from "../../../io/input/form/matrix/getMatrix.js"
 import {getArray} from "../../../io/input/form/array/getArray.js"
 import {addForceNetwork} from "../../../tk/d3/network/addForceNetwork.js";
+import {clearNetwork} from "./clear/clearNetwork.js";
 
 
 /** Draw the force network graph */
@@ -23,4 +24,7 @@ drawNetwork(p: any)
             ));
     const edges = matrixToEdges(matrixP, nodes, defaults.edge.weightScaling)
     addForceNetwork(ids.svg.network, nodes, edges);
+
+    jQuery(`#${ids.button.clearNetwork}`)
+        .click(() => clearNetwork(ids.svg.network));
 }

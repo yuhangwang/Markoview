@@ -14,7 +14,7 @@ init(svgId: string, nodes: any[], edges: any[])
 
     return d3.layout.force()
         .linkStrength((d: any) => 0.1 * weightScale(d.weight))
-        .charge(-1000)
+        .charge(-1500)
         .gravity(0.1)
         .size([svg_width, svg_height])
         .nodes(nodes)

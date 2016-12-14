@@ -15,8 +15,10 @@ import {addNodes} from "./node/addNodes.js";
 export function
 addForceNetwork(svgId: string, nodes: any[], edges: any[])
 {   let force = init(svgId, nodes, edges);
-    addNodes(svgId, nodes);
     addCurvedEdges(svgId, edges);
+    addNodes(svgId, nodes);
     force.start();
     addArrowHeadToCurves(force);
+
+    d3.selectAll("g.node").call(force.drag());
 }

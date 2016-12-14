@@ -6,7 +6,8 @@ function buttonIds() {
         showMatrix: "show_matrix",
         randomizeVector: "random_stochastic_vector",
         randomizeMatrix: "random_stochastic_matrix",
-        drawNetwork: "draw_network"
+        drawNetwork: "draw_network",
+        clearNetwork: "clear_network"
     };
 }
 exports.buttonIds = buttonIds;

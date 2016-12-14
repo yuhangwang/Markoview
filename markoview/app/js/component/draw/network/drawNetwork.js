@@ -4,6 +4,7 @@ const matrixToEdges_js_1 = require("../../../tk/convert/matrix/toEdges/matrixToE
 const getMatrix_js_1 = require("../../../io/input/form/matrix/getMatrix.js");
 const getArray_js_1 = require("../../../io/input/form/array/getArray.js");
 const addForceNetwork_js_1 = require("../../../tk/d3/network/addForceNetwork.js");
+const clearNetwork_js_1 = require("./clear/clearNetwork.js");
 function drawNetwork(p) {
     const ids = p.dom.id;
     const defaults = p.default.network;
@@ -18,6 +19,8 @@ function drawNetwork(p) {
     }));
     const edges = matrixToEdges_js_1.matrixToEdges(matrixP, nodes, defaults.edge.weightScaling);
     addForceNetwork_js_1.addForceNetwork(ids.svg.network, nodes, edges);
+    jQuery(`#${ids.button.clearNetwork}`)
+        .click(() => clearNetwork_js_1.clearNetwork(ids.svg.network));
 }
 exports.drawNetwork = drawNetwork;
 //# sourceMappingURL=drawNetwork.js.map
